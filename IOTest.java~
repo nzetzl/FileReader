@@ -1,0 +1,48 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package iotest;
+
+import java.io.*;
+import java.util.Scanner;
+
+/**
+ *
+ * @author nicholaszetzl
+ */
+public class IOTest {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) throws IOException{
+        File file = new File("Text");
+        
+        FileOutputStream fos = new FileOutputStream(file, true);
+        PrintWriter pw = new PrintWriter(fos);
+        Scanner s = new Scanner(System.in);
+        int count = 0;
+        while (count < 5) {
+            String line = s.nextLine();
+            pw.println(line);
+            count++;
+        }
+        s.close();
+        pw.close();
+        
+        FileReader fr = new FileReader(file);
+        BufferedReader bfr = new BufferedReader(fr);
+        String st;
+        while (true) {
+            st = bfr.readLine();
+            if (st == null) {
+                break;
+            } else {
+                System.out.println(s);
+            }
+        }
+        bfr.close();
+    }
+}
